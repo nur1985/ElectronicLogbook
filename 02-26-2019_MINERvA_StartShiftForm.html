@@ -1,0 +1,236 @@
+<script language="JavaScript1.2">
+<!--
+//All the script in here defines the functions used.  No function calls should be made here.
+//Does the showing/hiding work using the style class information defined near the html elements
+//that they work on.
+function setStyleByClass(t,c,p,v){
+var elements;
+elements = document.getElementsByTagName(t);
+for(var i = 0; i < elements.length; i++){
+var node = elements.item(i);
+for(var j = 0; j < node.attributes.length; j++) {
+if(node.attributes.item(j).nodeName == class) {
+if(node.attributes.item(j).nodeValue == c) {
+eval(node.style. + p + " =  +v + ");
+}
+}
+}
+}
+}
+
+//Simple hide command
+function hide(c){
+setStyleByClass("*", c, visibility, hidden);
+}
+//Simple show command
+function show(c){
+setStyleByClass("*", c, visibility, visible);
+}
+-->
+</script>
+<script language="Javascript"><!--
+aceDate = new Date()
+var myYear = aceDate.getYear()
+if (myYear < 1000) myYear = myYear+=1900
+var myDay  = aceDate.getDate()
+if (myDay < 10) myDay = "0" + myDay
+var myMonth = aceDate.getMonth() + 1
+if (myMonth<10) myMonth = "0" + myMonth
+document.write("Date: ")
+document.write("<input type=\"text\" size=\"10\" name=\"Date\" value=\"" + myMonth + "/" + myDay + "/" + myYear +"\">")
+
+var hours=aceDate.getHours()
+var minutes=aceDate.getMinutes()
+if (minutes < 10 ) minutes = "0" + minutes
+var seconds = aceDate.getSeconds()
+if (seconds < 10 ) seconds = "0" + seconds
+document.write("Time: ")
+document.write("<input type=\"text\" size=\"10\" name=\"Time\" value=\"" + hours + ":" + minutes + ":" + seconds +"\">")
+//--></script>
+<p align="center"><b>Start of the Shift</b></p>&#13;
+
+<p>
+Assume operational control of the detector.
+The purpose of these steps is to ensure a smooth transition
+from one shift to the next:
+</p>&#13;
+&#13;
+
+<table border="2">
+<caption></caption>
+<tbody>
+
+<tr>
+<td>Please Choose Your Shift</td>
+<td>
+<!--Shift Time-->
+<input type="radio" name="Shift" value="Day">Day
+<input type="radio" name="Shift" value="Evening">Evening
+<input type="radio" name="Shift" value="Sunrise">Sunrise
+<!--Date-->
+<SELECT NAME="Date">
+<OPTION VALUE="Date" SELECTED>Date</OPTION>
+</SELECT>
+<SELECT NAME="Time">
+<OPTION VALUE="Time" SELECTED>Time</OPTION>
+</SELECT>
+</td>
+</tr>
+
+
+<tr>
+<td>Shifter</td>
+<td><input type="text" name="Shifter"></td>
+</tr>
+<td>Second Shifter</td>
+<td> <input type="text" name="Second Shifter" value="None">
+</td>
+<tr></tr>
+<tr>
+<td>Is DAQ Running? (<a href="http://minerva-exp.fnal.gov/shift" target="_blank">link to shift status web page</a>)</td>
+<td>
+MINERvA:
+<input type="radio" name="Is MINERvA DAQ Running?" value="Yes">Yes
+<input type="radio" name="Is MINERvA DAQ Running?" value="No" onclick="javascript:show(SumPlots);">No<br>
+
+MINOS:
+<input type="radio" name="Is MINOS DAQ Running?" value="Yes">Yes
+<input type="radio" name="Is MINOS DAQ Running?" value="No" onclick="javascript:show(SumPlots);">No<br>
+
+Explain why the DAQ is not running.<br>
+<textarea name="Comments on why DAQ is not running" rows="3" cols="60">None.</textarea>
+
+
+</td>
+</tr>
+<tr>
+<td>Do you know the ongoing issues? (<a href="https://cdcvs.fnal.gov/redmine/projects/minerva-ops/wiki/MINERvA_memo_pad" target="_blank">link to redmine shift memo page</a>)</td>
+<td>
+<input type="radio" name="Do you know the ongoing issues?" value="Yes">Yes
+<input type="radio" name="Do you know the ongoing issues?" value="No" onclick="javascript:show(SumPlots);">No<br>
+
+Contact expert shifter to report any new issues.<br>
+
+</td>
+</tr>
+<tr>
+<td>Is MINOS RC shows subrun over 23? (<a href="http://minerva-exp.fnal.gov/shift/images/MINOS_RC_subrun.png" target="_blank">link to an example</a>)</td>
+<td>
+<input type="radio" name="Is MINOS RC shows subrun over 23?" value="No">No
+<input type="radio" name="Is MINOS RC shows subrun over 23?" value="Yes" onclick="javascript:show(SumPlots);">Yes, if over 23 please contact expert shifter.<br>
+
+</td>
+</tr>
+<tr>
+<!--
+<td>Shifter Location</td>
+<td><input type="text" name="Shifter Location"></td>
+</tr>
+-->
+<tr>
+<td>Day Shifter Location and Phone Number</td>
+<td>
+<!--	<input type="text" name="Shifter Location Phone Number"> -->
+<p>
+<SELECT NAME="Day Shifter Location and Phone Number">
+<OPTION VALUE="Not specified" SELECTED>Select location</OPTION>
+<OPTION VALUE="Fermilab - <b>630-840-2060</b>">Fermilab</OPTION>
+<OPTION VALUE="Pittsburgh, PA - <b>412-648-9276</b>">Pittsburgh, PA</OPTION>
+<OPTION VALUE="Rochester, NY - <b>646-397-8762</b>">Rochester, NY</OPTION>
+<OPTION VALUE="Brighton, NY - <b>646-397-8762</b>">Brighton, NY</OPTION>
+<OPTION VALUE="Tufts, MA - <b>617-627-4373</b>">Tufts, MA</OPTION>
+<OPTION VALUE="Duluth, MN - <b>218-726-8384</b>">Duluth, MN</OPTION>
+<OPTION VALUE="William & Mary, VA - <b>757-221-5485</b>">William &; Mary, VA</OPTION>
+<OPTION VALUE="Otterbein, OH - <b>614-823-1358</b>">Otterbein, OH</OPTION>
+<OPTION VALUE="Oxford, UK - <b>+441865 273411</b>">Oxford, UK</OPTION>
+<OPTION VALUE="Valparaiso, Chile - <b>9 011 56 32 265 4637</b>">Valparaiso, Chile</OPTION>
+<OPTION VALUE="Wheaton - <b>630-665-3806</b>">Wheaton, IL</OPTION>
+<OPTION VALUE="PUCP, Peru - <b>+511 626 2487 </b>">PUCP, Peru</OPTION>
+<OPTION VALUE="Corvallis, OR - <b>+541 737 4195 </b>">Corvallis, OR</OPTION>
+</SELECT>
+Or Checklist Shifter Location:
+<input type="text" name="Checklist Shifter Location" value="N/A">
+</p>
+</td>
+</tr>
+
+<!--
+Expert Shifter
+</tr>
+-->
+<tr>
+<tr>
+<td>Expert Shifter - 630-996-0092 (page first)</td>
+<td>
+<p>
+<SELECT NAME="Expert Shifter - 630-996-0092 (page first)">
+<!--OPTION VALUE="Not specified">Select Expert Shifter</OPTION-->
+<OPTION VALUE='Faiza Akbar - 928-306-6931' SELECTED>Faiza Akbar</OPTION>
+</SELECT>
+</p>
+</td>
+</tr>
+<tr>
+<td>SOS - 630-255-4094 (page first)</td>
+<td> <input type='text' name='SOS - 630-255-4094 (page first)' value='Marvin Ascencio - +51 965909300'>
+</td>
+</tr>
+
+<!--tr>
+<td>Have you phoned MCR (x3721) to tell them the location of the shift?</td>
+<td>Yes<input type="checkbox" name="MCR Called" value="yes"></td>
+</tr>
+<tr>
+<td>Have you looked in MCR Logbook to insure the location of the shift is recorded?</td>
+<td>Yes<input type="checkbox" name="MCR Logbook Checked" value="yes"></td>
+</tr-->
+<!--tr>
+<td>Can you connect to all the controls software?</td>
+<td>Yes<input type="checkbox" name="Can you connect to all the controls software?" value="Yes">
+No<input type="checkbox" name="Can you connect to all the controls software?" value="No">
+N/A<input type="checkbox" name="Can you connect to all the controls software?" value="N/A">
+</td>
+</tr-->
+
+<tr>
+<td>
+<table align="left" width="95%" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<td align="left">
+Can you connect to all the controls software (for UROC Day Shift only)?<br>
+(MINERvA Run Control, MINOS Run Control, and GMBrowser)
+</td>
+</tbody>
+</table>
+</td>
+<td>
+<input type="radio" name="Can you connect to all the controls software?" value="Yes">Yes
+<input type="radio" name="Can you connect to all the controls software?" value="N/A">N/A
+<input type="radio" name="Can you connect to all the controls software?" value="Problem" onclick="javascript:show(SumPlots);"> No. Explain why and describe the problem below
+<textarea name="Comments on control room connection issues" rows="3" cols="60">None.</textarea>
+</td>
+</tr>
+
+
+<tr>
+<td>Underground Activity (Describe any work or activities underground that might impact MINERvA during your shift)</td>
+<td><textarea name="Underground Activity" rows="3" cols="60">None.</textarea></td>
+</tr>
+<tr>
+<td>Run Plan (Briefly describe the work plan for this shift, including special runs, hardware checks, etc.)</td>
+<td><textarea name="Run Plan" rows="3" cols="60">Take data. </textarea></td>
+</tr>
+<tr>
+<td>Any Issues?</td>
+<td><textarea name="Any Issues" rows="3" cols="60">None.</textarea></td>
+</tr>
+<!--tr>
+<td colspan="2"> <br> Check the MINOS Memopad for current issues with the Near Detector: <br>
+<a href="https://cdcvs.fnal.gov/redmine/projects/minos-memopad/wiki" target="_blank">https://cdcvs.fnal.gov/redmine/projects/minos-memopad/wiki</a> <br></td>
+</tr-->
+
+
+</tbody>
+</table>
+
+</form>
