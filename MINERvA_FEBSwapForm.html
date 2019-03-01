@@ -1,0 +1,163 @@
+<script language="Javascript"><!--
+     aceDate = new Date()
+     var myYear = aceDate.getYear()
+     if (myYear < 1000) myYear = myYear+=1900
+     var myDay  = aceDate.getDate()
+     if (myDay < 10) myDay = "0" + myDay		
+     var myMonth = aceDate.getMonth() + 1
+     if (myMonth<10) myMonth = "0" + myMonth	 		
+     document.write("Date: ")	 
+     document.write("<input type=\"text\" size=\"10\" name=\"Date\" value=\"" 
+                     + myMonth + "/" + myDay + "/" + myYear +"\">")	
+ 
+     var hours=aceDate.getHours()
+     var minutes=aceDate.getMinutes() 
+     if (minutes < 10 ) minutes = "0" + minutes 
+     var seconds = aceDate.getSeconds()
+     if (seconds < 10 ) seconds = "0" + seconds
+     document.write("Time: ")	 
+     document.write("<input type=\"text\" size=\"10\" name=\"Time\" value=\"" 
+                     + hours + ":" + minutes + ":" + seconds +"\">")	
+--></script>
+<b>FEB Swap Form</b>
+<br>
+<table border="2">
+<caption></caption>
+  <tbody>
+<tr>
+<td>Old Serial Number</td>
+      <td><input type="text" name="Serial number of board removed" cols="10"></td>
+    </tr>
+<tr>
+<td>Last Run/subrun before swapping board</td>
+      <td><input type="text" name="Last run/subrun before swapping board" cols="10"></td>
+</tr>
+<tr>
+<td>New Serial Number</td>
+      <td><input type="text" name="Serial number of board installed" cols="10"></td>
+    </tr>
+<tr>
+<td>First Run/subrun after swapping board</td>
+      <td><input type="text" name="First run/subrun after swapping board" cols="10"></td>
+</tr>
+<tr>
+<td>Board Location - Crate</td>
+      <td>
+       <select name="Board Location - Crate (0-1)" size="2"><option> 0
+         </option>
+<option> 1
+       </option></select>
+</td>
+    </tr>
+<tr>
+<td>Board Location - CROC</td>
+      <td>
+       <select name="Board Location - CROC (1-8)" size="4"><option> 1
+         </option>
+<option> 2
+         </option>
+<option> 3
+         </option>
+<option> 4
+         </option>
+<option> 5
+         </option>
+<option> 6
+         </option>
+<option> 7
+         </option>
+<option> 8
+       </option></select>
+</td>
+    </tr>
+
+<!--tr>
+	<td>Board Location - Channel</td>
+     	<td><select name="Board Location - Channel (1-4)" size="4">
+	<option> 1 </option>
+	<option> 2 </option>
+	<option> 3 </option>
+	<option> 4 </option>
+	</select></td>
+</tr-->
+
+<tr>
+        <td>Board Location - Chain</td>
+        <td><select name="Board Location - Chain (0-3)" size="4">
+        <option> 0 </option>
+        <option> 1 </option>
+        <option> 2 </option>
+        <option> 3 </option>
+        </select></td>
+</tr>
+
+<tr>
+<td>Board Location - Number</td>
+      <td>
+       <select name="Board Location - Number (1-11)" size="4"><option> 1
+         </option>
+<option> 2
+         </option>
+<option> 3
+         </option>
+<option> 4
+         </option>
+<option> 5
+         </option>
+<option> 6
+         </option>
+<option> 7
+         </option>
+<option> 8
+         </option>
+<option> 9
+         </option>
+<option> 10
+         </option>
+<option> 11
+       </option></select>
+</td>
+    </tr>
+<tr>
+<td>Swap performed by</td>
+      <td><input type="text" name="Swap performed by"></td>
+    </tr>
+<tr>
+<td>Swap authorized by</td>
+      <td><input type="text" name="Swap authorized by"></td>
+    </tr>
+<tr>
+<td>Reason For Swap</td>
+      <td><textarea name="Reason for swap" rows="5" cols="40"></textarea></td>
+    </tr>
+<tr>
+<td>Location of swapped-out board (e.g., 'WH 14th Floor')</td>
+      <td><textarea name="Location of swapped-out board" rows="1" cols="40"></textarea></td>
+    </tr>
+
+<tr>
+    <td>Did you update the DB?<br>
+        DB: <a href="http://dbweb0.fnal.gov/mnvcon_prd_gui/app/GUI/fileBrowser" target="_blank">http://dbweb0.fnal.gov/mnvcon_prd_gui/app/GUI/fileBrowser</a><br>
+        Hint: /minerva/data/calibrations/feb_calib/FEB_constants<br>/FEBXXXXXX/FEBXXXXXX_ADCvsQ_TrilinearFit.txt <br>
+        (Can be uploaded only from Control Room machines)
+    </td>
+    <td>
+        <input type="radio" name="Did you update the DB?" value="Yes"> Yes
+            <input type="radio" name="Did you update the DB?" value="No" onclick="javascript:show('SumPlots');"> No. Explain why you didn't<br>
+            <textarea name="Reason for not updating DB" rows="4" cols="40"></textarea></td>
+</tr>
+
+<tr>
+    <td>Did you send an email to Ben Messerly - bam132@pitt.edu <br>and <br>shift the run number by +10?</td>
+    <!--input type="radio" name="Shift Summary Plots" value="OK" checked="checked"> Yes-->
+    <td>
+        <input type="radio" name="Did you email Ben?" value="Yes"> Yes
+            <input type="radio" name="Did you email Ben?" value="No" onclick="javascript:show('SumPlots');"> No. Explain why you didn't<br>
+            <textarea name="Comments or Reason for not emailing" rows="5" cols="40"></textarea></td>
+</tr>
+
+  </tbody>
+</table>
+<br>
+
+
