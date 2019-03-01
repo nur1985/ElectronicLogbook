@@ -1,0 +1,251 @@
+<script language="JavaScript1.2">
+    <!--
+    //All the script in here defines the functions used.  No function calls should be made here.
+    //Does the showing/hiding work using the style class information defined near the html elements
+    //that they work on.
+    function setStyleByClass(t,c,p,v){
+        var elements;
+        elements = document.getElementsByTagName(t);
+        for(var i = 0; i < elements.length; i++){
+            var node = elements.item(i);
+            for(var j = 0; j < node.attributes.length; j++) {
+                if(node.attributes.item(j).nodeName == 'class') {
+                    if(node.attributes.item(j).nodeValue == c) {
+                        eval('node.style.' + p + " = '" +v + "'");
+                    }
+                }
+            }
+        }
+    }
+
+//Simple hide command
+function hide(c){
+    setStyleByClass("*", c, 'visibility', 'hidden');
+}
+//Simple show command
+function show(c){
+    setStyleByClass("*", c, 'visibility', 'visible');
+}
+-->
+    </script>
+<script language="Javascript"><!--
+    aceDate = new Date()
+    var myYear = aceDate.getYear()
+    if (myYear < 1000) myYear = myYear+=1900
+    var myDay  = aceDate.getDate()
+    if (myDay < 10) myDay = "0" + myDay
+    var myMonth = aceDate.getMonth() + 1
+    if (myMonth<10) myMonth = "0" + myMonth
+    document.write("Date: ")
+    document.write("<input type=\"text\" size=\"10\" name=\"Date\" value=\"" + myMonth + "/" + myDay + "/" + myYear +"\">")
+    
+    var hours=aceDate.getHours()
+    var minutes=aceDate.getMinutes()
+    if (minutes < 10 ) minutes = "0" + minutes
+    var seconds = aceDate.getSeconds()
+    if (seconds < 10 ) seconds = "0" + seconds
+    document.write("Time: ")
+    document.write("<input type=\"text\" size=\"10\" name=\"Time\" value=\"" + hours + ":" + minutes + ":" + seconds +"\">")
+    //--></script>
+<p align="center"><b>Shadow Shift Checklist</b></p>&#13;
+
+<p>
+This form documents the shadow shift which is required of any person taking shifts for the Minerva detector. This form serves two purposes:
+<br>
+1. It provides documentation for experts to ensure that all shifters are adequately trained to take shift, and
+<br>
+2. It provides the shadowing shifter with an example of properly executed shift procedures that they may reference in advance of and during their future shifts. 
+<br>
+<p><b>This form should be filled out by the shadow shifter. If the shadow shifter doesn't have an ECL account, they shouldn't be taking a shadow shift.</b></p>
+Notes:<br>
+-This checklist should remain open for the duration of the shadow shift and be consulted/edited throghout the shift. <br>
+-It is the supervising shifter's responsibility to explain shift procedures accurately and thoroughly. <br>
+<!--(A supervisor's companion guide to administering a shadow shift is coming soon to a control room near you!)--> 
+
+</p>&#13;
+&#13;
+
+<table border="2">
+	<caption></caption>
+	
+	<tbody>
+        
+		<tr>            
+			<td>Shadowing shifter:</td>
+			<td><input type="text" name="Shadow shifter"></td>
+		</tr>
+
+		<tr>
+			<td> Supervising shifter:</td>
+			<td> <input type="text" name="Supervising shifter"> </td>
+		</tr>
+
+                <tr>
+                        <td>Type of shadow shift:</td>
+
+                        <td>
+                                <p><SELECT NAME="Shift type">
+                                        <OPTION VALUE="Not specified" SELECTED>Select type</OPTION>
+                                        <OPTION VALUE="Day">Day shift</OPTION>
+                                        <OPTION VALUE="Evening">Evening shift</OPTION>
+                                        <OPTION VALUE="Sunrise">Sunrise shift</OPTION>
+                                </SELECT></p>
+                        </td>
+
+                        <td>Note:</td>
+
+                        <td><input type="text" name="RunTypeNote"></td>
+
+                </tr>
+
+			<td>Location of shadow shift:</td>
+
+			<td>
+				<p><SELECT NAME="Shifter Location">
+                    <OPTION VALUE="Not specified" SELECTED>Select location</OPTION>
+                    <OPTION VALUE="Fermilab - <b>630-840-2060</b>">Fermilab</OPTION>
+                    <OPTION VALUE="Pittsburgh, PA - <b>412-648-9276</b>">Pittsburgh, PA</OPTION>
+                    <OPTION VALUE="Rochester, NY - <b>646-397-8762</b>">Rochester, NY</OPTION>
+                    <OPTION VALUE="Brighton, NY - <b>646-397-8762</b>">Brighton, NY</OPTION>
+                    <OPTION VALUE="Tufts, MA - <b>617-627-4373</b>">Tufts, MA</OPTION>
+                    <OPTION VALUE="Duluth, MN - <b>218-726-8384</b>">Duluth, MN</OPTION>
+                    <OPTION VALUE="William & Mary, VA - <b>757-221-5485</b>">William &; Mary, VA</OPTION>
+                    <OPTION VALUE="Otterbein, OH - <b>614-823-1358</b>">Otterbein, OH</OPTION>
+                    <OPTION VALUE="Oxford, UK - <b>+44 1865 273409</b>">Oxford, UK</OPTION>
+                    <OPTION VALUE="Valparaiso, Chile - <b>9 011 56 32 265 4637</b>">Valparaiso, Chile</OPTION>
+                    <OPTION VALUE="Wheaton - <b>630-665-3806</b>">Wheaton, IL</OPTION>
+                    <OPTION VALUE="PUCP, Peru - <b>+511 626 2487 </b>">PUCP, Peru</OPTION>
+                    <OPTION VALUE="Corvallis, OR - <b>+541 737 4195 </b>">Corvallis, OR</OPTION>
+				</SELECT></p>
+			</td>
+                
+		</tr>
+        
+                <tr>
+                        <td>Has shadow shifter filled out Start_Shift_Form?</td>
+                        <td>Yes<input type="checkbox" name="StartShift" value="yes"></td>
+                </tr>
+
+		<tr>
+			<td colspan="4" height="1">&nbsp;</td>
+		</tr>
+	
+		<tr>
+			<td colspan="2">Has the supervising shifter explained each of the following to the shadow shifter, and does the <br>
+					shadowing shifter understand how to utilize the tool/perform the action?</td>
+			<td colspan="2">Notes,for future reference of shadow shifter:</td>
+		</tr>
+
+        <tr>
+            <td>Polycom: Did you learn how to use it?</td>
+            <td>Yes<input type="checkbox" name="Polycom" value="yes"></td>
+            <td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+        </tr>
+
+		<tr>
+			<td>Minerva ECL</td>
+			<td>Yes<input type="checkbox" name="MinervaECL" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>Minerva RunControl, including how to restart it</td>
+			<td>Yes<input type="checkbox" name="MinervaRunControl" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>How/when to change RunControl running series type</td>
+			<td>Yes<input type="checkbox" name="ChangeRunSeries" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>Is the Start_Run_Series form filling automatically?</td>
+			<td>Yes<input type="checkbox" name="StartRunSeries" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>GMBrowser</td>
+			<td>Yes<input type="checkbox" name="GMBrowser" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>eChecklist</td>
+			<td>Yes<input type="checkbox" name="eChecklist" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+                <tr>
+                        <td>Arachne</td>
+                        <td>Yes<input type="checkbox" name="Arachne" value="yes"></td>
+                        <td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+                </tr>
+
+		<tr>
+			<td>Rock Muon Checklist <br><br> Has shadow shifter filled out the Rock Muon checklist? </td>
+			<td>Yes<input type="checkbox" name="RockMuonChecklist" value="yes"> <br><br> Yes<input type="checkbox" name="MINOS OM line 2" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="3" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>Veto wall monitoring</td>
+			<td>Yes<input type="checkbox" name="VetoWallMonitor" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>NuMI Beam Monitoring</td>
+			<td>Yes<input type="checkbox" name="NuMIMonitoring" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>MINOS RunControl</td>
+			<td>Yes<input type="checkbox" name="MINOSRunControl" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>MINOS OM <br><br> Has shadow shifter filled out MINOS OM checklist?</td>
+			<td>Yes<input type="checkbox" name="MINOS OM" value="yes"> <br><br> Yes<input type="checkbox" name="MINOS OM line 2" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>MINOS DCS <br><br> Has shadow shifter filled out MINOS DCS checklist?</td>
+			<td>Yes<input type="checkbox" name="MINOS DCS" value="yes"> <br><br> Yes<input type="checkbox" name="MINOS OM line 2" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>How, and when, to page the detector expert</td>
+			<td>Yes<input type="checkbox" name="PageExpert" value="yes"></td>
+			<td colspan="2"><textarea name="Notes" rows="2" cols="30"></textarea></td>
+		</tr>
+
+
+		<tr>    
+			<td colspan="4" height="1">&nbsp;</td>
+                </tr> 
+
+                <tr>
+                        <td>Has shadow shifter commented on the shift summary plots to the ECL?</td>
+                        <td>Yes<input type="checkbox" name="ShiftSummaryPlots" value="yes"></td>
+                </tr>
+
+                <tr>
+                        <td>Has shadow shifter filled out the End_Shift_Form?</td>
+                        <td>Yes<input type="checkbox" name="EndShift" value="yes"></td>
+                </tr>
+
+	</tbody>
+</table>
+
+<p><b>Once you have completed a shadow shift, please update your Glaucus profile to reflect this and send<br>
+    email to Dee Hahn - dhahn@fnal.gov, Howard Budd - hbudd@fnal.gov, and Nuruzzaman - nur@fnal.gov</b></p>
+            
+</form>
+
