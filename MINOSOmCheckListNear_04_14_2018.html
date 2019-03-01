@@ -1,0 +1,736 @@
+<script language="JavaScript1.2">
+    <!--
+    //All the script in here defines the functions used.  No function calls should be made here.
+    //Does the showing/hiding work using the style class information defined near the html elements
+    //that they work on.
+    function setStyleByClass(t,c,p,v){
+        var elements;
+        elements = document.getElementsByTagName(t);
+        for(var i = 0; i < elements.length; i++){
+            var node = elements.item(i);
+            for(var j = 0; j < node.attributes.length; j++) {
+                if(node.attributes.item(j).nodeName == 'class') {
+                    if(node.attributes.item(j).nodeValue == c) {
+                        eval('node.style.' + p + " = '" +v + "'");
+                    }
+                }
+            }
+        }
+    }
+
+//Simple hide command
+function hide(c){
+    setStyleByClass("*", c, 'visibility', 'hidden');
+}
+//Simple show command
+function show(c){
+    setStyleByClass("*", c, 'visibility', 'visible');
+}
+-->
+    </script>
+<script language="Javascript">
+    <!--
+    aceDate = new Date();
+    var myYear = aceDate.getYear();
+    if (myYear < 1000) myYear = myYear+=1900;
+    var myDay  = aceDate.getDate();
+    if (myDay < 10) myDay = "0" + myDay;
+    var myMonth = aceDate.getMonth() + 1;
+    if (myMonth<10) myMonth = "0" + myMonth;
+    document.write("Date: ");
+    document.write("<input type=\"text\" size=\"10\" name=\"Date\" value=\"" +
+                   myMonth + "/" + myDay + "/" + myYear +"\">");
+                   
+                   var hours=aceDate.getHours();
+                   var minutes=aceDate.getMinutes();
+                   if (minutes < 10 ) minutes = "0" + minutes;
+                   var seconds = aceDate.getSeconds();
+                   if (seconds < 10 ) seconds = "0" + seconds;
+                   document.write("Time: ");
+                   document.write("<input type=\"text\" size=\"10\" name=\"Time\" value=\"" +
+                                  hours + ":" + minutes + ":" + seconds +"\">");
+                                  -->
+    </script>
+<p align="center"><b>ND Online Monitoring Checklist</b></p>
+
+<p>Need help filling the checklist? Open the checklist <a href="http://nusoft.fnal.gov/minos/controlroom/om/omgallery/NearDet/ChecklistPlots/" target="help"><font color="green"> Help Page </font></a></p>
+
+<p>You can open all the reference plots on one page now: <a href="http://minerva-exp.fnal.gov/nusoft/minervacal/minos_om_reference_plots/minosomref.php" target="help"><font color="green"> All Reference Plots </font></a></p>
+<p>And here's a nice map explaining the electronics numbering scheme: <a href="http://dbweb0.fnal.gov/ECL/minerva/E/full_image/82641/nd-map-flat.png" target="help"><font color="green"> Electronics Numbering Scheme </font></a></p>
+
+<p>Online Monitoring Plots can be found <a href="http://minos.fnal.gov/OM/index.php?p=shiftchecklist" target="help"><font color="green"> here </font></a></p>
+
+<p>Identify problem electronics using CRATE - MASTER - MINDER - CHANNEL</p>
+
+<table border="2"><tbody>
+
+<tr>
+    <td>Please Choose Your Shift</td>
+    <td>
+        <!--Shift Time-->
+        <input type="radio" name="Shift" value="Day">Day
+        <input type="radio" name="Shift" value="Evening">Evening
+        <input type="radio" name="Shift" value="Sunrise">Sunrise
+        <!--Date-->
+        <SELECT NAME="Date">
+            <OPTION VALUE="Date" SELECTED>Date</OPTION>
+        </SELECT>
+        <SELECT NAME="Time">
+            <OPTION VALUE="Time" SELECTED>Time</OPTION>
+        </SELECT>
+    </td>
+</tr>
+
+    <tr>
+        <td>Shifter</td>
+        <td><input type="text" name="Shifter"></td>
+    </tr>
+                    
+    <tr>
+        <td>
+        <table align="right" width="100%" border="0" cellpadding="0" cellspacing="0"><tbody>
+        <td align="left">Status Canvas</td>
+        <td align="right"><font color="green">Check that the Time<br> and run are current.</font></td>
+        </tbody></table>
+        </td>
+        <td><input type="checkbox" name="OM Status" value="x"></td>
+    </tr>
+    
+    <tr>
+        <td>Run Number</td>
+        <td><input type="text" name="Run"></td>
+    </tr>
+    
+    <tr>
+        <td>
+            <table align="right" width="100%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                <td align="left">Is there any error message on MINOS Run Control?</td>
+                <td align="right">
+                    <a href="http://minerva-exp.fnal.gov/shift/minos.html" target="Link to RC Page">Link to RC Page</a>
+                </td>
+            </tbody></table>
+        </td>
+        <td>
+            <input type="radio" name="MINOS Run Control Error" value="OK"> OK
+                <input type="radio" name="MINOS Run Control Error" value="Problem" onclick="javascript:show('MINOS Run Control Error');"> Problem, Page or Call Expert Shifter
+                    </td>
+    </tr>
+
+                <!-- QIE Errors --><style>
+                .QIEErrors{
+                position:relative;
+                visibility:hidden;
+                }
+                </style>
+                <tr>
+                    <td>QIE Error Summary:<br><font color="green">CAPID/MISCOUNT Errors: Do not worry unless a particular MENU has more than 100 entries<br> or the entry is
+                        continuously growing<br>If more than 5 MENUs satisfy these conditions then call an expert</font>
+                    </td>
+                    <td><textarea name="QIE Error Summary Comment" rows="3" cols="40"></textarea></td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">CAPID Errors</td>
+                            <td align="right"><font color="green"></font></td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="CAPID" value="OK">OK
+                            <input type="radio" name="CAPID" value="Problem" onclick="javascript:show('QIEErrors');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">MISCOUNT Errors</td>
+                            <td align="right"><font color="green"></font></td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="MISCOUNT" value="OK">OK
+                            <input type="radio" name="MISCOUNT" value="Problem" onclick="javascript:show('QIEErrors');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">PARITY Errors</td>
+                            <td align="right"><font color="green"></font></td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="PARITY" value="OK">OK
+                            <input type="radio" name="PARITY" value="Problem" onclick="javascript:show('QIEErrors');"> Problem
+                    </td>
+                </tr>
+                <tr class="QIEErrors">
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Errors Found: Please give <font color="red"> order of magnitude of rate for each</font>
+                            </td>
+                            <td align="right"><a href="javascript:hide('QIEErrors');">N/A</a></td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <textarea name="Problems, QIE Errors" rows="2" cols="40"></textarea>
+                    </td>
+                </tr>
+                <!-- Singles section --><style>
+                    .Singles{
+                        position:relative;
+                        visibility:hidden;
+                    }
+                </style>
+                <tr>
+                    <td>Singles: <font color="green">Will not be filled until LI is done flashing</font>
+                    </td>
+                    <td><textarea name="Singles Comment" rows="2" cols="40"></textarea></td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Is the monthly LI Gain Curve running?</td>
+                            <td align="right">
+                                <font color="green">
+                                    See "Next Gain Curve" rcGui box</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Gain Curve Running" value="No">No
+                        <input type="radio" name="Gain Curve Running" value="Yes">Yes
+                    </td>
+                </tr>
+                <style>
+                    .GainCurveRunning{
+                        position:relative;
+                        visibility:hidden;
+                    }
+                </style>
+                <tr class="GainCurveRunning">
+                    <td align="right"><font color="red">The monthly LI Gain Curve is running</font></td>
+                    <td><font color="green">High rate LI spillover messes up the singles rate plots in any
+                        run during which it happened, do not worry about the singles rates
+                        check right now.</font></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Current Singles Rate</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_00.jpg" target="gallery">Gallery</a>
+                                <font color="green">Range</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Current Singles" value="OK"> OK
+                            <input type="radio" name="Current Singles" value="Problem" onclick="javascript:show('Singles');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Max Singles Rate</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_01.jpg" target="gallery">Gallery</a>
+                                <font color="green">Range</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Max Singles" value="OK"> OK
+                            <input type="radio" name="Max Singles" value="Problem" onclick="javascript:show('Singles');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Mean Singles Rate</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_02.jpg" target="gallery">Gallery</a>
+                                <font color="green">Range</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Mean Singles" value="OK"> OK
+                            <input type="radio" name="Mean Singles" value="Problem" onclick="javascript:show('Singles');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Minimum Singles Rate</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_03.jpg" target="gallery">Gallery</a>
+                                <font color="green">Range</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Min Singles" value="OK"> OK
+                            <input type="radio" name="Min Singles" value="Problem" onclick="javascript:show('Singles');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Singles Rate per crate</td>
+                            <td align="right">
+                                <font color="green">15 - 25 (kHz)</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Singles Rate per crate" value="OK"> OK
+                            <input type="radio" name="Singles Rate per crate" value="Problem" onclick="javascript:show('Singles');"> Problem
+                    </td>
+                </tr>
+                <tr class="Singles">
+                    <td align="right">Problems Found</td>
+                    <td><textarea name="Problems, Singles" rows="2" cols="40"></textarea></td>
+                </tr>
+                <!-- Raw Digits --><style>
+                    .RawDigits{
+                        position:relative;
+                        visibility:hidden;
+                    }
+                </style>
+                <tr>
+                    <td>Raw Digits: <font color="green"> Check for holes and hot spots <br> Priority/Wrong datatype : Do not worry if a particular MENU has less than 100 entries<br> or the entry is not continuously growing</font>
+                    </td>
+                    <td><textarea name="Raw Digits Comment" rows="3" cols="40"></textarea></td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Hit Maps, COSMIC</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_04.jpg" target="gallery">Gallery</a>
+                                <font color="green">Hot &gt; ?</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Hit Maps, COSMIC" value="OK"> OK
+                            <input type="radio" name="Hit Maps, COSMIC" value="Problem" onclick="javascript:show('RawDigits');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Hit Maps, SGATE</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_05.jpg" target="gallery">Gallery</a>
+                                <font color="green">Range</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Hit Maps, SGATE" value="OK"> OK
+                            <input type="radio" name="Hit Maps, SGATE" value="Problem" onclick="javascript:show('RawDigits');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Priority Trucate Errors</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_06.jpg" target="gallery">Gallery</a>
+                                <font color="green">Typical OK Plot</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Priority Truncate" value="OK"> OK
+                            <input type="radio" name="Priority Truncate" value="Problem" onclick="javascript:show('QIEErrors');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">QIE Digits, COSMIC</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_07.jpg" target="gallery">Gallery</a>
+                                <font color="green">Typical OK Plot</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="QIE Digits, COSMIC" value="OK"> OK
+                            <input type="radio" name="QIE Digits, COSMIC" value="Problem" onclick="javascript:show('RawDigits');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">QIE Digits, SGATE</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_08.jpg" target="gallery">Gallery</a>
+                                <font color="green">Typical OK Plot</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="QIE Digits, SGATE" value="OK"> OK
+                            <input type="radio" name="QIE Digits, SGATE" value="Problem" onclick="javascript:show('RawDigits');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">QIE Digits, SGATE, Wrong datatype</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_09.jpg" target="gallery">Gallery</a>
+                                <font color="green">Typical OK Plot</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="QIE Digits, Wrong datatype" value="OK"> OK
+                            <input type="radio" name="QIE Digits, Wrong datatype" value="Problem" onclick="javascript:show('RawDigits');"> Problem
+                    </td>
+                </tr>
+                <tr class="RawDigits">
+                    <td align="right">Problems Found</td>
+                    <td><textarea name="Problems, Raw Digits" rows="2" cols="40"></textarea></td>
+                </tr>
+                <!-- Light Injection --><style>
+                    .LightInjection{
+                        position:relative;
+                        visibility:hidden;
+                    }
+                </style>
+                <tr>
+                    <td>Light Injection: <font color="green"><br>Note that missing entries in <br> pulser box 2, LED 11 are a known OM feature</font>
+                    </td>
+                    <td><textarea name="LI Comment" rows="3" cols="40"></textarea></td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">LED vs Pulserbox</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_10.jpg" target="gallery">Gallery</a>
+                                <font color="green">Check that all LEDs have flashed. </font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="LightInjection" value="OK"> OK
+                            <input type="radio" name="LightInjection" value="Problem" onclick="javascript:show('LightInjection');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">LI Hit Map West</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_11.jpg" target="gallery">Gallery</a>
+                                <font color="green">Should be ~2000  Check for dead areas</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="LI Hit Map" value="OK"> OK
+                            <input type="radio" name="LI Hit Map" value="Problem" onclick="javascript:show('LightInjection');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">LI Gain Map West</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_12.jpg" target="gallery">Gallery</a>
+                                <font color="green">Range</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="LI Gain Map" value="OK"> OK
+                            <input type="radio" name="LI Gain Map" value="Problem" onclick="javascript:show('LightInjection');"> Problem
+                    </td>
+                </tr>
+                <tr class="LightInjection">
+                    <td align="right">Problems Found</td>
+                    <td><textarea name="Problems, LI" rows="2" cols="40"></textarea></td>
+                </tr>
+                <!-- Pedestal Checking --><style>
+                    .PedestalChecking{
+                        position:relative;
+                        visibility:hidden;
+                    }
+                </style>
+                <tr>
+                    <td>Pedestal Checking:<br>
+			<font color="green">
+			For Pedestal ADC Mean, RMS, Rogue Pedestals, and Rogue Cal Check Channels:<br>
+			Go back to Minos OM Home Webpage.<br>
+			Look into the right column of the page and under the Old Runs (past 7 days) column, 
+			choose the most recent qiecal run, i.e. ND_[run_number]_qiecal<br>
+			Go back to the shift checklist page and go to the Pedestal ADC Mean, RMS, Rogue Pedestals,<br>
+			and Rogue Cal Check Channels plots again. These plots should be filled now.
+</font>
+                    </td>
+                    <td><textarea name="Pedestal Comment" rows="4" cols="40"></textarea></td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Pedestal ADC Mean</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_13.jpg" target="gallery">Gallery</a>
+                                <font color="green">45
+                                </font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Pedestal Mean" value="OK"> OK
+                            <input type="radio" name="Pedestal Mean" value="Problem" onclick="javascript:show('PedestalChecking');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Pedestal ADC RMS</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_14.jpg" target="gallery">Gallery</a>
+                                <font color="green"> If a whole minder has a  large or 0 RMS, <br> that is a problem. <br> A high RMS on 0-16-3 is not a problem.</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Pedestal RMS" value="OK"> OK
+                            <input type="radio" name="Pedestal RMS" value="Problem" onclick="javascript:show('PedestalChecking');"> Problem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Rogue Pedestals</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_15.jpg" target="gallery">Gallery</a>
+                                <font color="green">  but a whole minder is a Problem</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Rogue Pedestals" value="OK"> OK
+                            <input type="radio" name="Rogue Pedestals" value="Problem" onclick="javascript:show('PedestalChecking');"> Problem
+                    </td>
+                </tr>
+                <tr class="PedestalChecking">
+                    <td align="right">Problems Found</td>
+                    <td><textarea name="Problems, Pedestals" rows="2" cols="40"></textarea></td>
+                </tr>
+                <!-- Crate Monitor --><style>
+                    .CrateMonitor{
+                        position:relative;
+                        visibility:hidden;
+                    }
+                </style>
+                <tr>
+                    <td>Crate Monitor:</td>
+                    <td><textarea name="Crate Monitor Comment" rows="2" cols="40"></textarea></td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">ROP Temperatures</td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_16.jpg" target="gallery">Gallery</a>
+                                <font color="green"><br>These are only read out at START of run <br> 15 to 53 degrees C</font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="ROP temperatures" value="OK" onclick="javascript:hide('CrateMonitor');"> OK
+                            <input type="radio" name="ROP temperatures" value="Problem" onclick="javascript:show('CrateMonitor');"> Problem
+                    </td>
+                </tr>
+                <tr class="CrateMonitor">
+                    <td align="right">Problems Found</td>
+                    <td><textarea name="Problems, CC" rows="2" cols="40"></textarea></td>
+                </tr>
+                <!-- Near Check Cal--><style>
+                    .RogueCheckCal{
+                        position:relative;
+                        visibility:hidden;
+                    }
+                </style>
+                <tr>
+                    <td>Near Check Cal:</td>
+                    <td><textarea name="Near Check Cal Comment" rows="2" cols="40"></textarea></td>
+                    
+                </tr>
+                <tr>
+                    <td align="right">
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Rogue Cal Check Channels<br>
+                            <font color="green">See instruction above in Pedestal Checking section:<br>
+                            </td>
+                            <td align="right">
+                                <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_17.jpg" target="gallery">Gallery</a>
+                                <font color="green">but a whole minder is a Problem</font>
+                                </font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Rogue CheckCal" value="OK" onclick="javascript:hide('RogueCheckCal');">OK
+                            <input type="radio" name="Rogue CheckCal" value="Problem" onclick="javascript:show('RogueCheckCal');"> Problem
+                    </td>
+                </tr>
+                <tr class="RogueCheckCal">
+                    <td align="right">Problems Found</td>
+                    <td><textarea name="Problems, CC" rows="2" cols="40"></textarea></td>
+                </tr>
+                <!-- SGATE Timing --><style>
+                    .SGateTiming{
+                        position:relative;
+                        visibility:hidden;
+                    }
+                </style>
+                <tr>
+                    <td>SGATE Timestamps (ADC Weighted):
+                    </td>
+                    <td><textarea name="SGATE Timestamp Comment" rows="2" cols="40"></textarea></td>
+                    
+                </tr>
+                <td>
+                    <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                        <td align="left">T-T0 SGATE ADC Weighted</td>
+                        <td align="right">
+                            <a href="http://nusoft.fnal.gov/minerva/minervacal/minos_om_reference_plots/plots/plot_18.jpg" target="gallery">Gallery</a>
+                            <font color="green">Beam Contained within buckets 50-700?</font>
+                        </td>
+                    </tbody></table>
+                </td>
+                <td>
+                    <input type="radio" name="Beam in SGATE" value="OK"> OK
+                        <input type="radio" name="Beam in SGATE" value="Beam Off"> Beam Off
+                            <input type="radio" name="Beam in SGATE" value="Problem" onclick="javascript:show('SGateTiming');"> Problem
+                </td>
+                
+                <tr>
+                    <td>
+                        <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                            <td align="left">Individual Crates 0-7 consistent with their sum?</td>
+                            <td align="right">
+                                <font color="green"></font>
+                            </td>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        <input type="radio" name="Crates SGATE" value="OK"> OK
+                            <input type="radio" name="Crates SGATE" value="Beam Off"> Beam Off
+                                <input type="radio" name="Crates SGATE" value="Problem" onclick="javascript:show('SGateTiming');"> Problem
+                    </td>
+                </tr>
+                <tr class="SGateTiming">
+                    <td align="right">Problems Found</td>
+                    <td><textarea name="Problems, SGATE Timing" rows="2" cols="40"></textarea></td>
+                </tr>
+                
+                
+                
+                <!-- Bad Channel Monitoring --><style>
+                    .BadChannelMonitoring{
+                        position:relative;
+                        visibility:hidden;
+                    }
+                </style>
+                <tr>
+                    <td>Bad Channel Monitoring:</td>
+                    <td><textarea name="Bad Channel Monitoring Comment" rows="2" cols="40"></textarea></td>
+                    
+                </tr>
+
+
+                <td>
+                    <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                        <td align="left">Are we taking good MINOS data?<br>
+                            <font color="green">94% or above in the box labeled "Good Physics Data".</font><br><br>
+                            <font color="black">Is the webpage up-to-date? (check if the timestamp at the bottom of the page [in GMT] is older than 1 day + 5 hours)</font>
+                        </td>
+
+
+                    <td align="right">
+                            <a href="http://nusoft.fnal.gov/minos/validation/near/autochecknear.summary.html" target="Link to the web">Link to the web</a>
+                        </td>
+                    </tbody></table>
+                        <td>
+                            <input type="radio" name="Are we taking good MINOS data?" value="Yes"> Yes.
+                            <input type="radio" name="Are we taking good MINOS data?" value="No">No
+                            <input type="radio" name="Are we taking good MINOS data?" value="Not Sure">Not Sure
+                            <input type="radio" name="Are we taking good MINOS data?" value="No Beam">No Beam
+                                <br><br>
+                            <input type="radio" name="Is the webpage up-to-date?" value="Yes"> Yes.
+                            <input type="radio" name="Is the webpage up-to-date?" value="No">No. Please send email to <a href="mailto:minerva-ops@fnal.gov?Subject=MINOS Data Validation Page is Down" target="_top">minerva-ops@fnal.gov</a>
+
+                        </td>
+
+                </td>
+                </tr>
+
+                <tr>
+
+                <td>
+                    <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+                        <td align="left">Do you have any bad channels?<br>
+                        <font color="green">Only list the hot ( __H__) and dead (__d__) channels</font>
+                        </td>
+                        <td align="right">
+                            <a href="http://nusoft.fnal.gov/minos/validation/badchannels/near/dailyBadChannelList.html" target="Link to the web">Link to the web</a>
+                        </td>
+                    </tbody></table>
+                </td>
+                <td>
+                    <input type="radio" name="Do you have any bad channels?" value="Yes"> Yes.
+                    <input type="radio" name="Do you have any bad channels?" value="No bad channel">No bad channel
+                    <br>
+                    Please write the hot and dead channels below
+                    <textarea name="Bad channels" cols="40" rows="3">None.</textarea>
+                </td>
+                <tr class="BadChannelMonitoring">
+                    <td align="right">Bad Channel Monitoring</td>
+                    <td><textarea name="Bad Channel Monitoring" rows="2" cols="40"></textarea></td>
+                </tr>
+
+
+<!-- Disk Space Monitoring --><style>
+    .DiskSpaceMonitoring{
+        position:relative;
+        visibility:hidden;
+    }
+</style>
+<tr>
+    <td>DAQ Disk Space Usage (Check the current usage from MINSO DAQ <a href="http://minerva-exp.fnal.gov/shift/minos.html" target="_blank">Link to the DAQ web</a>)<p>Here is one example when disk space usage is 11.9 percent <a href="http://minerva-exp.fnal.gov/shift/images/MINOS_run_controlDiskSpace.png" target="_blank">Link to EXAMPLE</a>. <br>If the usage is more than 70%, please send email to the <a href="mailto:minerva-ops@fnal.gov?Subject=MINOS DAQ machine is almost full" target="_top">minerva-ops@fnal.gov</a>.
+        </p></td>
+    <td><textarea name="DAQ Disk Space Usage" rows="1" cols="40"></textarea> percent.
+        <br><br>
+                        <input type="radio" name="DAQ disk space usage is" value="Below 70%">Below 70%,
+                            <input type="radio" name="DAQ disk space usage is" value="Above 70%">Above 70%. Send email to <a href="mailto:minerva-ops@fnal.gov?Subject=MINOS DAQ machine is almost full" target="_top">minerva-ops@fnal.gov</a>
+
+    </td>
+    
+</tr>
+
+
+
+                <!-- General Comments --><tr>
+                    <td><b>Comments</b></td>
+                    <td><textarea name="Comments" rows="2" cols="40"></textarea></td>
+                </tr>
+                <!-- End of entry fields-->
+</tbody></table>
+
