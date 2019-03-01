@@ -1,0 +1,73 @@
+<script language="Javascript">
+</script>
+
+<p align="center">
+
+	<b>Power Cycle Form</b>
+
+</p>
+
+<p>
+
+	If the VME crate(s) or any FEBs have been power cycled during standard operations of the detector, the Calibrations group needs information to determine if a new calibrations IOV (interval of validity) needs to be created. Please be as specific as possible. This form does not need to be filled out following only a reset of any FEBs. 
+
+</p>
+
+<p>
+
+	<b> Please email this entry to minerva-calibrators@fnal.gov!! </b>
+
+</p>
+
+
+<table border="2">
+<tbody>
+
+<tr>
+	<td>Last run/subrun before swap</td>
+	<td><input type="text" name="Run Series"></td>
+</tr>
+
+<tr>
+        <td>First run/subrun after swap</td>
+        <td><input type="text" name="Run Series"></td>
+</tr>
+
+<tr>
+	<td>Have you power cycled the VME?</td>
+	
+	<td><p><SELECT NAME="Select one">
+		<OPTION VALUE="Not specified" SELECTED>Select</OPTION>
+		<OPTION VALUE="True">Yes (Please explain context in the Comments)</OPTION>
+		<OPTION VALUE="False">No</OPTION>
+	</SELECT></p></td>
+</tr>
+
+<tr>
+        <td>Have you power cycled any FEBs?</td>
+        
+        <td><p><SELECT NAME="Select one">
+                <OPTION VALUE="Not specified" SELECTED>Select</OPTION>
+                <OPTION VALUE="True">Yes (Please specify which FEBs in the Comments)</OPTION>
+                <OPTION VALUE="False">No</OPTION>
+        </SELECT></p></td>
+</tr>
+
+<tr>
+	<td>Comments. Please be as specific as possible</td>
+	<td><textarea name="Comments" rows="5" cols="60"></textarea></td>
+</tr>
+
+<tr>
+    <td>Did you send an email to Ben Messerly - bam132@pitt.edu <br>and <br>shift the run number by +10?</td>
+    <!--input type="radio" name="Shift Summary Plots" value="OK" checked="checked"> Yes-->
+    <td>
+        <input type="radio" name="Shift Summary Plots" value="OK"> Yes
+            <input type="radio" name="Shift Summary Plots" value="Problem" onclick="javascript:show('SumPlots');"> No. Explain why you didn't<br>
+            <textarea name="Reason for not emailing" rows="5" cols="40"></textarea></td>
+</tr>
+
+</tbody>
+</table>
+
+</form>
