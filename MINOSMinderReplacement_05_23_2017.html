@@ -1,0 +1,80 @@
+<script language="Javascript"><!--
+     aceDate = new Date()
+     var myYear = aceDate.getYear()
+     if (myYear < 1000) myYear = myYear+=1900
+     var myDay  = aceDate.getDate()
+     if (myDay < 10) myDay = "0" + myDay    
+     var myMonth = aceDate.getMonth() + 1
+     if (myMonth<10) myMonth = "0" + myMonth      
+     document.write("Date: ")  
+     document.write("<input type=\"text\" size=\"10\" name=\"Date\" value=\"" 
+                     + myMonth + "/" + myDay + "/" + myYear +"\">") 
+ 
+     var hours=aceDate.getHours()
+     var minutes=aceDate.getMinutes() 
+     if (minutes < 10 ) minutes = "0" + minutes 
+     var seconds = aceDate.getSeconds()
+     if (seconds < 10 ) seconds = "0" + seconds
+     document.write("Time: ")  
+     document.write("<input type=\"text\" size=\"10\" name=\"Time\" value=\"" 
+                     + hours + ":" + minutes + ":" + seconds +"\">")  
+--></script>
+<b>FEB Swap Form</b>
+<br>
+<table border="2">
+<caption></caption>
+  <tbody>
+<tr>
+<td>Date and time of swap</td>
+      <td><input type="text" name="date and time of swap" cols="20"></td>
+    </tr>
+<tr>
+<td>Swap performed by</td>
+      <td><input type="text" name="swap performed by" cols="10"></td>
+    </tr>
+<tr>
+<td>Master crate location (Crate - Slot - Channel)</td>
+      <td><input type="text" name="master crate location (crate - slot - channel)" cols="10"></td>
+    </tr>
+<tr>
+<td>Minder crate location (Crate - Slot - Channel)</td>
+      <td><input type="text" name="minder crate location (crate - slot - channel)" cols="10"></td>
+    </tr>
+<tr>
+<td>Old Serial Number</td>
+      <td><input type="text" name="Serial number of board removed" cols="10"></td>
+    </tr>
+<tr>
+<td>New Serial Number</td>
+      <td><input type="text" name="Serial number of board installed" cols="10"></td>
+    </tr>
+<tr>
+<td>Last Run before swapping board</td>
+      <td><input type="text" name="Last run before swapping board" cols="10"></td>
+    </tr>
+<tr>
+<td>First Run after swapping board</td>
+      <td><input type="text" name="First run after swapping board" cols="10"></td>
+    </tr>
+<tr>
+<td>Reason For Swap</td>
+      <td><textarea name="Reason for swap" rows="5" cols="40"></textarea></td>
+    </tr>
+<tr>
+<td>Location of swapped-out board (e.g., 'WH 14th Floor')</td>
+      <td><textarea name="Location of swapped-out board" rows="1" cols="40"></textarea></td>
+    </tr>
+<tr>
+    <td>Did you send an email to minerva-ops@fnal.gov <br>and <br>cc the calibrations list - minerva-calibrators@fnal.gov</td>
+    <!--input type="radio" name="Shift Summary Plots" value="OK" checked="checked"> Yes-->
+    <td>
+        <input type="radio" name="Shift Summary Plots" value="OK"> Yes
+            <input type="radio" name="Shift Summary Plots" value="Problem" onclick="javascript:show('SumPlots');"> No. Explain why you didn't<br>
+            <textarea name="Reason for not emailing" rows="5" cols="40"></textarea></td>
+</tr>
+
+  </tbody>
+</table>
+<br>
+
+
