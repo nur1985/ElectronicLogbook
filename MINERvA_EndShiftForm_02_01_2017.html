@@ -1,0 +1,265 @@
+<script language="JavaScript1.2">
+        <!--
+            //All the script in here defines the functions used.  No function calls should be made here.
+                //Does the showing/hiding work using the style class information defined near the html elements
+                    //that they work on.
+                        function setStyleByClass(t,c,p,v){
+                                    var elements;
+                                            elements = document.getElementsByTagName(t);
+                                                    for(var i = 0; i < elements.length; i++){
+                                                                    var node = elements.item(i);
+                                                                                for(var j = 0; j < node.attributes.length; j++) {
+                                                                                                    if(node.attributes.item(j).nodeName == 'class') {
+                                                                                                                            if(node.attributes.item(j).nodeValue == c) {
+                                                                                                                                                        eval('node.style.' + p + " = '" +v + "'");
+                                                                                                                                                                            }
+                                                                                                                                                                                            }
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                    //Simple hide command
+function hide(c){
+ setStyleByClass("*", c, 'visibility', 'hidden');
+}
+                                                                                                                                                                                                                        //Simple show command
+ function show(c){
+ setStyleByClass("*", c, 'visibility', 'visible');
+}
+
+ -->
+</script>
+
+<script language="Javascript"><!--
+                                                                                                                                                                                                                                        aceDate = new Date()
+
+var myYear = aceDate.getYear()
+
+if (myYear < 1000) myYear = myYear+=1900
+
+var myDay  = aceDate.getDate()
+
+if (myDay < 10) myDay = "0" + myDay
+
+var myMonth = aceDate.getMonth() + 1
+
+if (myMonth<10) myMonth = "0" + myMonth
+
+document.write("Date: ")
+
+document.write("<input type=\"text\" size=\"10\" name=\"Date\" value=\""
+
+ + myMonth + "/" + myDay + "/" + myYear +"\">")
+                                                                                                                                                                                                                                                                                                              
+var hours=aceDate.getHours()
+
+var minutes=aceDate.getMinutes()
+                                                                                                                                                                                                                                                                                                                                                    if (minutes < 10 ) minutes = "0" + minutes
+
+var seconds = aceDate.getSeconds()
+
+if (seconds < 10 ) seconds = "0" + seconds
+
+document.write("Time: ")
+
+document.write("<input type=\"text\" size=\"10\" name=\"Time\" value=\""
++ hours + ":" + minutes + ":" + seconds +"\">")
+
+--></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <p align="CENTER"><b>End Shift Form</b></p>
+
+<br>
+
+<table border="2">
+
+<caption></caption>
+<tbody>
+
+<tr>
+    <td>Please Choose Your Shift</td>
+    <td>
+        <!--Shift Time-->
+        <input type="radio" name="Shift" value="Day">Day
+        <input type="radio" name="Shift" value="Evening">Evening
+        <input type="radio" name="Shift" value="Sunrise">Sunrise
+        <!--Date-->
+        <SELECT NAME="Date">
+            <OPTION VALUE="Date" SELECTED>Date</OPTION>
+        </SELECT>
+        <SELECT NAME="Time">
+            <OPTION VALUE="Time" SELECTED>Time</OPTION>
+        </SELECT>
+    </td>
+</tr>
+
+<tr>
+<td>Shifter</td>
+<td><input type="text" name="Shifter"></td>
+</tr>
+<td>Second Shifter</td>
+<td> <input type="text" name="Second Shifter" value="None">
+</td>
+<tr></tr>
+
+<tr>
+    <td>Run Series in Progress (<a href="http://minerva-exp.fnal.gov/shift" target="_blank">link to shift status web page</a>)</td>
+    <td>
+        MINERvA: <input type="text" name="MINERvA Run Series in Progress">,&nbsp;&nbsp;&nbsp;&nbsp;
+            MINOS: <input type="text" name="MINOS Run Series in Progress">
+                </td>
+</tr>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+<tr>
+    <td>Typical beam intensity (<a href="http://dbweb0.fnal.gov/ifbeam/numimon/Display" target="_blank">link to NuMI web page</a>): </td>
+<td> <input type="text" name="Avg beam intensity">
+</td>
+</tr>
+
+
+<tr>
+<td>List usable runs/subruns from this shift<br>
+    (check Auto Data Qual. from the <a href="http://minerva-wbm.fnal.gov/minerva/echecklist/mininfo.php" target="_blank">echecklist page</a>): </td>
+<td> Example: 20050/10 </td>
+</tr>
+
+<tr></tr>
+
+<td align="RIGHT">good beam runs</td>
+<td><textarea name="good beam runs" cols="80" rows="3"></textarea></td>
+
+<tr></tr>
+
+<td align="RIGHT">good pedestal runs</td>
+<td><textarea name="good pedestal runs" cols="80" rows="3"></textarea></td>
+
+<tr></tr>
+
+<td align="RIGHT">good LI runs</td>
+<td><textarea name="good LI runs" cols="80" rows="3"></textarea></td>
+
+<!-- SumPlots -->
+<style>
+.SumPlots{
+position:relative;
+visibility:hidden;
+}
+</style>
+<tr>
+
+<tr>
+    <td>Beam up time since last checklist (<a href="http://minerva-exp.fnal.gov/shift/live.html" target="_blank">link to shift live web page</a>) </td>
+    <td> <input type="text" name="Beam up time" maxlength="4">
+    </td>
+</tr>
+
+
+<tr>
+<td>
+<table align="left" width="95%" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<td align="left">
+Make sure the shift summary plots are uploaded to ECL automatically.<br>
+Have you commented on shift summary plots?<br><br>
+Contact Nur - nur@fnal.gov in case of problem. 
+</td>
+</tbody>
+</table>
+</td>
+<td>
+<!--input type="radio" name="Shift Summary Plots" value="OK" checked="checked"> Yes-->
+<input type="radio" name="Shift Summary Plots" value="Yes"> Yes
+<input type="radio" name="Shift Summary Plots" value="No" onclick="javascript:show('SumPlots');"> No. Explain why and describe the problem below
+<textarea name="Comments on shift summary plots" rows="3" cols="80"></textarea>
+
+</td>
+</tr>
+
+
+<tr class="SumPlots">
+<tr>
+<td>
+<table align="left" width="95%" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<td align="left">If this was a day shift, did you check the rock muon plots?</td>
+<td align="right">
+<a href="http://minerva-exp.fnal.gov/nusoft/minervacal/daily_muon_monitoring.html" target="rockmuplots">Rock Muon Plots</a>
+</td>
+</tbody>
+</table>
+</td>
+<td>
+<input type="radio" name="Rock muon plots" value="Yes"> Yes
+<input type="radio" name="Rock muon plots" value="No"> No, there was no link
+<input type="radio" name="Rock muon plots" value="Not day shift"> Not a day shift
+</td>
+</tr>
+
+<tr>
+<td>If you checked the rock muon plots, what was the reported MINOS gate matching? (page 18)</td>
+<td>
+Matching Percent<input type="text" name="MINOS Gate Matching" size="4">
+Start time<input type="text" name="MINOS Gate Start" size="18">
+End time<input type="text" name="MINOS Gate End" size="18">
+</td>
+</tr>
+
+
+<tr class="SumPlots">
+<tr>
+    <td>
+    <table align="left" width="95%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <td align="left">Post an Arachne screenshot to the ECL<br>
+        Please look at event display for few minutes. 
+        </td>
+        <td align="right">
+        <a href="http://minerva05.fnal.gov/Arachne/live.html" target="eventDisplay">Arachne Link</a>
+        </td>
+    </tbody>
+    </table>
+    </td>
+    
+    <td>
+        <input type="radio" name="Event from Arachne" value="OK"> OK
+        <input type="radio" name="Event from Arachne" value="No"> No
+        <input type="radio" name="Event from Arachne" value="No Beam"> No Beam
+        <input type="radio" name="Event from Arachne" value="Arachne is not working">Arachne is not working
+    </td>
+</tr>
+
+
+
+<tr>
+<td>
+<table align="left" width="95%" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<td align="left">Are you leaving the detector in Beam Mode? The detector should be left in beam mode.</td>
+<td align="right">
+<a href="https://cdcvs.fnal.gov/redmine/projects/minerva-ops/wiki/Minerva_Shift" target="instructions">Shift Instructions</a>
+</td>
+</tbody>
+</table>
+</td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <td>
+<input type="radio" name="In Beam Mode" value="Yes"> Yes
+<input type="radio" name="In Beam Mode" value="No" onclick="javascript:show('SumPlots');"> No, please explain in summary.
+</td>
+</tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <tr class="BeamMode">
+
+<tr>
+<td>Describe in detail any hardware problems or changes:</td>
+<td><textarea name="Hardware problems" cols="80" rows="3">None.</textarea></td>
+</tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <tr>
+<td>Describe in detail any software problems or changes:</td>
+<td><textarea name="Software problems" cols="80" rows="3">None.</textarea></td>
+</tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <tr>
+<td> Shift summary:  Describe the activities of this shift, including any tasks to be carried over to the next shift. </td>
+<td><textarea name="Shift summary" cols="80" rows="3">None.</textarea></td>
+</tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </tbody>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </table>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <br>
