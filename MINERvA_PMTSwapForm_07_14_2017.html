@@ -1,0 +1,84 @@
+<script language="Javascript"><!--
+     aceDate = new Date()
+     var myYear = aceDate.getYear()
+     if (myYear < 1000) myYear = myYear+=1900
+     var myDay  = aceDate.getDate()
+     if (myDay < 10) myDay = "0" + myDay		
+     var myMonth = aceDate.getMonth() + 1
+     if (myMonth<10) myMonth = "0" + myMonth	 		
+     document.write("Date: ")	 
+     document.write("<input type=\"text\" size=\"10\" name=\"Date\" value=\"" 
+                     + myMonth + "/" + myDay + "/" + myYear +"\">")	
+ 
+     var hours=aceDate.getHours()
+     var minutes=aceDate.getMinutes() 
+     if (minutes < 10 ) minutes = "0" + minutes 
+     var seconds = aceDate.getSeconds()
+     if (seconds < 10 ) seconds = "0" + seconds
+     document.write("Time: ")	 
+     document.write("<input type=\"text\" size=\"10\" name=\"Time\" value=\"" 
+                     + hours + ":" + minutes + ":" + seconds +"\">")	
+--></script>
+<b>PMT Box Swap Form</b>
+<br>
+<table border="2">
+<caption></caption>
+  <tbody>
+<tr>
+<td>Old Serial Number</td>
+      <td><input type="text" name="Serial number of box removed" cols="5"></td>
+    </tr>
+<tr>
+<td>Last Run/subrun before swapping box</td>
+      <td><input type="text" name="Last run/subrun before swapping box" cols="10"></td>
+    </tr>
+<tr>
+<td>New Serial Number</td>
+      <td><input type="text" name="Serial number of box installed" cols="5"></td>
+    </tr>
+<tr>
+<td>First Run/subrun after swapping box</td>
+      <td><input type="text" name="First run/subrun after swapping box" cols="10"></td>
+    </tr>
+<tr>
+<td>Crate-CROC-Chain-Board (format: [0-n]-[0-m]-[0-3]-[1-11]):</td>
+ 	   <td><input type="text" name="Board Address" cols="15"></td>
+	 </tr>
+<tr>
+    <td>Weave</td>
+    <td>
+        <input type="radio" name="Weave" value="Tufts">Tufts
+            <input type="radio" name="Weave" value="Rutgers" onclick="javascript:show('SumPlots');">Rutgers.<br>Explain if you changed the Weave<br>
+                <textarea name="Explain if you changed the Weave" rows="3" cols="40"></textarea>
+            </td>
+    
+</tr>
+<tr>
+<td>Swap performed by</td>
+      <td><input type="text" name="Swap performed by"></td>
+    </tr>
+<tr>
+<td>Swap authorized by</td>
+      <td><input type="text" name="Swap authorized by"></td>
+    </tr>
+<tr>
+<td>Reason For Swap</td>
+      <td><textarea name="Reason for swap" rows="5" cols="40"></textarea></td>
+    </tr>
+<tr>
+<td>Location of swapped-out box (e.g., 'Lab-F')</td>
+      <td><textarea name="Location of swapped-out box" rows="1" cols="40"></textarea></td>
+    </tr>
+
+<tr>
+    <td>Did you send an email to Ben Messerly - bam132@pitt.edu <br>and <br>shift the run number by +10?</td>
+    <!--input type="radio" name="Shift Summary Plots" value="OK" checked="checked"> Yes-->
+    <td>
+        <input type="radio" name="Did you email Ben?" value="Yes"> Yes
+            <input type="radio" name="Did you email Ben?" value="No" onclick="javascript:show('SumPlots');"> No. Explain why you didn't<br>
+            <textarea name="Comments or Reason for not emailing" rows="5" cols="40"></textarea></td>
+</tr>
+
+  </tbody>
+</table>
+<br>
