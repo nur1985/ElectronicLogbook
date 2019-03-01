@@ -1,0 +1,382 @@
+<script language="Javascript">
+<!--
+aceDate = new Date();
+var myYear = aceDate.getYear();
+if (myYear < 1000) myYear = myYear+=1900;
+var myDay  = aceDate.getDate();
+if (myDay < 10) myDay = "0" + myDay;
+var myMonth = aceDate.getMonth() + 1;
+if (myMonth<10) myMonth = "0" + myMonth;
+document.write("Date: ");
+document.write("<input type=\"text\" size=\"10\" name=\"Date\" value=\"" +
+myMonth + "/" + myDay + "/" + myYear +"\">");
+
+var hours=aceDate.getHours();
+var minutes=aceDate.getMinutes();
+if (minutes < 10 ) minutes = "0" + minutes;
+var seconds = aceDate.getSeconds();
+if (seconds < 10 ) seconds = "0" + seconds;
+document.write("Time: ");
+document.write("<input type=\"text\" size=\"10\" name=\"Time\" value=\"" +
+hours + ":" + minutes + ":" + seconds +"\">");
+-->
+</script>
+<p align="center"><b>MINERvA Rock Muon Checklist</b></p>
+
+<p>Open the rock muon monitoring page <a href="http://minerva-exp.fnal.gov/nusoft/minervacal/daily_muon_monitoring.html" target="rockmu"><font color="green"> here </font></a></p>
+
+<p>Left-hand plots are most recent 24-hour period, on a 3-day lag <br>
+Right-hand plots are references</p>
+
+<table border="2"><tbody>
+
+<tr>
+    <td>Please Choose Your Shift</td>
+    <td>
+        <!--Shift Time-->
+        <input type="radio" name="Shift" value="Day">Day
+        <input type="radio" name="Shift" value="Evening">Evening
+        <input type="radio" name="Shift" value="Sunrise">Sunrise
+        <!--Date-->
+        <SELECT NAME="Date">
+            <OPTION VALUE="Date" SELECTED>Date</OPTION>
+        </SELECT>
+        <SELECT NAME="Time">
+            <OPTION VALUE="Time" SELECTED>Time</OPTION>
+        </SELECT>
+    </td>
+</tr>
+
+<tr>
+<td>Shifter</td>
+<td><input type="text" name="Shifter"></td>
+</tr>
+
+
+<tr>
+<td>Link for today's date exists</td>
+<td><input type="checkbox" name="Link Exists" value="x"></td>
+</tr>
+
+<tr>
+<td>Start and End times:<br>
+<font color="green">Look at the title to the plots in pages 0-4<br>
+for the start and end times of the data shown<br>
+Enter the date and time<br>
+Example: 1873-04-22 00:07:23</font>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Start date/time</td>
+<td align="right"><font color="green"></font></td>
+</tbody></table>
+</td>
+<td>
+<input type="text" name="Start time">
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">End date/time</td>
+<td align="right"><font color="green"></font></td>
+</tbody></table>
+</td>
+<td>
+<input type="text" name="End time">
+</td>
+</tr>
+<tr>
+
+<tr>
+<td>Reviewing the plots:<br>
+<font color="green">For each plot, choose either OK or Problem<br>
+Use the instructions and reference plots as a guide</font>
+</td>
+<td></td>
+</tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 0: Protons per pulse <br>
+<font color="green">Points should be between 0 and a few e13<br>There may be fluctuations in the intensity</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 0" value="OK"> OK
+<input type="radio" name="Page 0" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 1: Time slices / POT <br>
+<font color="green">Should be flat, and any spikes should<br>correlate to dips in the protons per pulse </font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 1" value="OK"> OK
+<input type="radio" name="Page 1" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 2: Rock muons / POT <br>
+<font color="green">Should be flat</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 2" value="OK"> OK
+<input type="radio" name="Page 2" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 3: MINOS tracks / POT <br>
+<font color="green">Should be flat<br>It is OK if one point is ~30% low<br>This is due to the MINOS run changing over</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 3" value="OK"> OK
+<input type="radio" name="Page 3" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 4: MINOS-matched rock muons / POT <br>
+<font color="green">Should be flat<br>One point could be ~30% low in the same spot</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 4" value="OK"> OK
+<input type="radio" name="Page 4" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 5: Muon cluster PE <br>
+<font color="green">Fit should lie right on top of points<br>Shape should match reference plot</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 5" value="OK"> OK
+<input type="radio" name="Page 5" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 6: MINERvA-MINOS track deltaT <br>
+<font color="green">Only occasional entries outside peak<br>These are due to accidental matches</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 6" value="OK"> OK
+<input type="radio" name="Page 6" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 7: MINERvA-MINOS gate deltaT <br>
+<font color="green">This should be a delta function at 0<br>Email the expert shifter if there are ANY entires<br>outside the peak at 0</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 7" value="OK"> OK
+<input type="radio" name="Page 7" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+    <table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+        <td align="left">MINOS-MINERvA DAQ Clock Time Matching <br>
+            <font color="green">Check the MINOS-MINERvA DAQ Clock Time Difference plot at <a href="http://minerva-exp.fnal.gov/shift/live.html" target="_blank">shift live page</a><br>Email Nur - nur@fnal.gov if the mismatch is greater than 0.2s</font></td>
+        
+    </tbody></table>
+</td>
+<td>
+    <input type="radio" name="Live MINOS-MINERvA DAQ Clock Time Matching" value="OK"> OK
+        <input type="radio" name="Live MINOS-MINERvA DAQ Clock Time Matching" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 8: MINOS 1/p residual <br>
+<font color="green">Check that both the shape and the relative amount of red and blue is similar to the reference</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 8" value="OK"> OK
+<input type="radio" name="Page 8" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 9: Time between gates <br>
+<font color="green">Largest peak should be spill frequency ~1.3 s<br>Other peaks should be ~10x or more smaller</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 9" value="OK"> OK
+<input type="radio" name="Page 9" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 10: Dead time fraction <br>
+<font color="green">Should be ~1-3% everywhere, make sure there is not a hot region.<br>These values depend on the intensity of the beam </font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 10" value="OK"> OK
+<input type="radio" name="Page 10" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 11: Dead time fraction vs. intensity <br>
+<font color="green">Should be an increasing function, top out around ~2% at 33e12</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 11" value="OK"> OK
+<input type="radio" name="Page 11" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 12: Cluster PE vs time <br>
+<font color="green">Latest point should be in line with others</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 12" value="OK"> OK
+<input type="radio" name="Page 12" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 13: Protons per pulse per day <br>
+<font color="green">Average intensity over a day<br>Should be consistent with Page 0</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 13" value="OK"> OK
+<input type="radio" name="Page 13" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 14: Time slices / POT per day <br>
+<font color="green">Latest point should be consistent with previous few</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 14" value="OK"> OK
+<input type="radio" name="Page 14" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 15: Rock muons / POT per day <br>
+<font color="green">Latest point should be consistent with previous few</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 15" value="OK"> OK
+<input type="radio" name="Page 15" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 16: MINOS tracks / POT per day <br>
+<font color="green">Latest point should be consistent with previous few</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 16" value="OK"> OK
+<input type="radio" name="Page 16" value="Problem"> Problem
+</td>
+</tr>
+<tr>
+
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Page 17: MINOS-matched rock muons / POT per day <br>
+<font color="green">Latest point should be consistent with previous few</font></td>
+
+</tbody></table>
+</td>
+<td>
+<input type="radio" name="Page 17" value="OK"> OK
+<input type="radio" name="Page 17" value="Problem"> Problem
+</td>
+</tr>
+
+<td>
+Plots 18-21 only count events with a MINOS gate match. That means if <br>
+the MINOS detector is off, or if the MINOS keepup file is missing, <br> 
+the POT will not be counted. They exist to help experts diagnose <br>
+problems with plots 4-5, and they are not part of the checklist. <br>
+</td>
+
+<tr>
+<!-- Report problems --><tr>
+<td><b>Comment on any problems</b><br>Email Roger Galindo if there are problems:<br>rogerschrodinger@gmail.com</td>
+<td><textarea name="Problems" rows="5" cols="40"></textarea></td>
+</tr>
+<!-- End of entry fields-->
+</tbody></table>
