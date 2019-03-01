@@ -1,0 +1,238 @@
+<script language="Javascript">
+<!--
+aceDate = new Date()
+var myYear = aceDate.getYear()
+if (myYear < 1000) myYear = myYear+=1900
+var myDay  = aceDate.getDate()
+if (myDay < 10) myDay = "0" + myDay
+var myMonth = aceDate.getMonth() + 1
+if (myMonth<10) myMonth = "0" + myMonth
+document.write("Date: ")
+document.write("<input type=\"text\" size=\"10\" name=\"Date\" value=\"" +
+myMonth + "/" + myDay + "/" + myYear +"\">")
+
+var hours=aceDate.getHours()
+var minutes=aceDate.getMinutes()
+if (minutes < 10 ) minutes = "0" + minutes
+var seconds = aceDate.getSeconds()
+if (seconds < 10 ) seconds = "0" + seconds
+document.write("Time: ")
+document.write("<input type=\"text\" size=\"10\" name=\"Time\" value=\"" +
+hours + ":" + minutes + ":" + seconds +"\">")
+-->
+</script>
+<p align="center"><b>Near Detector DCS/Timing Checklist</b></p>&#13;
+&#13;
+
+<table border="2">
+<caption></caption>
+<tbody>
+    
+<tr>
+    <td>Please Choose Your Shift</td>
+    <td>
+        <!--Shift Time-->
+        <input type="radio" name="Shift" value="Day">Day
+        <input type="radio" name="Shift" value="Evening">Evening
+        <input type="radio" name="Shift" value="Sunrise">Sunrise
+        <!--Date-->
+        <SELECT NAME="Date">
+            <OPTION VALUE="Date" SELECTED>Date</OPTION>
+        </SELECT>
+        <SELECT NAME="Time">
+            <OPTION VALUE="Time" SELECTED>Time</OPTION>
+        </SELECT>
+    </td>
+</tr>
+
+<tr>
+<td>Shifter</td>
+<td><input type="text" name="Shifter"></td>
+</tr>
+
+
+<tr>
+<td>Open DCS status webpage (<a href="http://minos.fnal.gov/controlroom/webdcs/dcs_status.html" target="_blank">link</a>), make sure it has been updated recently
+( &lt; 10 minutes ago)</td>
+<td><input type="checkbox" name="DCS webpage" value="x"></td>
+</tr>
+<tr>
+<td>Check that HV monitor is running:</td>
+<td><input type="checkbox" name="HV monitor" value="x"></td>
+</tr>
+<tr>
+<td>Check that RPS daemon is running</td>
+<td><input type="checkbox" name="RPS daemon" value="x"></td>
+</tr>
+<tr>
+<td>
+<font color="#eaaf00">RPS Warnings (in yellow):</font>  (No need to call experts.  Enter Comment below.)</td>
+<td><input type="text" name="RPS Warnings"></td>
+</tr>
+<tr>
+<td>
+<font color="red">RPS ALARMS (IN RED):</font>  (Please contact experts! Make separate CRL Entry)</td>
+<td><input type="text" name="RPS Alarms"></td>
+</tr>
+<tr>
+<td>Check that the Environment Monitor is running</td>
+<td><input type="checkbox" name="Env Monitor" value="x"></td>
+</tr>
+<tr>
+<td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+<td align="left">Environment Temperature</td>
+<td align="right">
+<font color="green">65-80 F</font> </td>
+</tr></tbody></table>
+</td>
+<td><input size="5" name="Env Temp South" type="text"></td>
+</tr>
+<tr>
+<td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+<td align="left">Humidity</td>
+<td align="right"><font color="green">10-50%</font></td>
+</tr></tbody></table>
+</td>
+<td><input type="text" size="5" name="Humdity"></td>
+</tr>
+<tr>
+<td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+<td align="left">Pressure</td>
+<td align="right"><font color="green">20-40 In Hg</font></td>
+</tr></tbody></table>
+</td>
+<td><input type="text" size="5" name="Pressure"></td>
+</tr>
+<tr><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+<td align="left">Maximum MASTER (M1-M8) Thermocouple <br>
+(Air Cooled - ROPs shut down at 50C)</td>
+<td>
+</td>
+<td align="right"><font color="green">&amp;lt 92 F</font></td>
+</tr></tbody></table>
+</td></tr>
+<tr>
+<td align="RIGHT">Crate</td>
+<td><input type="text" size="5" name="Max MASTER Temp Crate"></td>
+</tr>
+<tr>
+<td align="RIGHT">Temperature</td>
+<td><input type="text" size="5" name="Max MASTER Temp"></td>
+</tr>
+<tr><td>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+<td align="left">Maximum MINDER (V1-V13, U1-U13) Thermocouple
+<br>(Water Cooled - DCS will shut down crate at 92F)</td>
+<td>
+</td>
+<td align="right"><font color="green">&amp;lt 90 F </font></td>
+<td>
+</td>
+</tr></tbody></table>
+</td></tr>
+<tr>
+<td align="RIGHT">Crate</td>
+<td><input type="text" size="5" name="Max MINDER Temp Crate"></td>
+</tr>
+<tr>
+<td align="RIGHT">Temperature</td>
+<td><input type="text" size="5" name="Max MINDER Temp"></td>
+</tr>
+<tr>
+<td>Check that the Magnet Monitor is running</td>
+<td><input type="checkbox" name="Magnet Monitor" value="x"></td>
+</tr>
+<tr>
+<td>Magnet Polarity</td>
+<td><select name="polarity"><option value="Reverse" selected> Reverse </option>
+<option value="Forward">          Forward </option></select></td>
+</tr>
+<tr>
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+<td align="left">Magnet Coil Current</td>
+<td align="right"><font color="green"> 4960 A &amp;lt I &amp;lt 4980 A</font></td>
+</tr></tbody></table>
+</td>
+<td><input type="text" size="5" name="Current"></td>
+</tr>
+<tr>
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+<td align="left">LCW Resistivity: <br> ( &lt; 1 M &Omega will damage the coil)</td>
+<td align="right"><font color="green"> &gt; 4 M &Omega cm </font></td>
+</tr></tbody></table>
+</td>
+<td><input type="text" size="5" name="LCW Resistivity"></td>
+</tr>
+<tr>
+<td>
+<table align="right" width="95%" border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+<td align="left">LCW output temperature: <br>(T &amp;gt 80 F trips the coil)<br>(T setpoint is 67, so increasing T means clogged filters)</td>
+<td align="right"><font color="green"> T &amp;lt 71 F</font></td>
+</tr></tbody></table>
+</td>
+<td><input type="text" size="5" name="LCW Temp"></td>
+</tr>
+<tr>
+<td>
+<table width="95%" border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+<td align="left">Check the pumps that are running:</td>
+<td align="right"><font color="green"> At least one pump running</font></td>
+</tr></tbody></table>
+</td>
+
+</tr>
+<tr>
+<td align="RIGHT">Pump 1</td>
+<td><input type="checkbox" name="Pump 1" value="x"></td>
+</tr>
+<tr>
+<td align="RIGHT">Pump 2</td>
+<td><input type="checkbox" name="Pump 2" value="x"></td>
+</tr>
+<!-- Timing system checklist --><tr>
+<td>Open ND Timing Status webpage</td>
+<td><input type="checkbox" name="ND Timing Status" value="x"></td>
+</tr>
+<tr>
+<td align="LEFT">GPS Live</td>
+<td>
+<input type="radio" name="GPS Live" value="Yes"> Yes
+<input type="radio" name="GPS Live" value="No"> No </td>
+</tr>
+<tr>
+<td align="LEFT">MCC Connected</td>
+<td>
+<input type="radio" name="MCC Connected" value="Ok"> Ok
+<input type="radio" name="MCC Connected" value="Problem"> Problem </td>
+</tr>
+<tr>
+<td align="LEFT">Time Goblin Status</td>
+<td>
+<input type="radio" name="Goblin Status" value="Ok"> Ok
+<input type="radio" name="Goblin Status" value="Problem"> Problem </td>
+</tr>
+<tr>
+<td align="LEFT">Time Master GPS Error, ns <font color="green">~200</font>
+</td>
+<td><input name="ND GPS Error" type="text" size="8"></td>
+</tr>
+<tr>
+<td align="LEFT">GPS Last Spill <font color="green"> recent when the beam is on</font>
+</td>
+<td><input name="GPS Last Spill" type="text"></td>
+</tr>
+</tbody>
+</table>&#13;
+&#13;
+DCS/Timing Comments
+<br>
+<textarea name="DCS Comments" rows="5" cols="72"></textarea>
+<br>
+
+
