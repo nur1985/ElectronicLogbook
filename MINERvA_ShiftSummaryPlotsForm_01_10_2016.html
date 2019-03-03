@@ -1,0 +1,77 @@
+<script language="Javascript">
+<!--
+aceDate = new Date();
+var myYear = aceDate.getYear();
+if (myYear < 1000) myYear = myYear+=1900;
+var myDay  = aceDate.getDate();
+if (myDay < 10) myDay = "0" + myDay;
+var myMonth = aceDate.getMonth() + 1;
+if (myMonth<10) myMonth = "0" + myMonth;
+document.write("Date: ");
+document.write("<input type=\"text\" size=\"10\" name=\"Date\" value=\"" +
+myMonth + "/" + myDay + "/" + myYear +"\">");
+
+var hours=aceDate.getHours();
+var minutes=aceDate.getMinutes();
+if (minutes < 10 ) minutes = "0" + minutes;
+var seconds = aceDate.getSeconds();
+if (seconds < 10 ) seconds = "0" + seconds;
+document.write("Time: ");
+document.write("<input type=\"text\" size=\"10\" name=\"Time\" value=\"" +
+hours + ":" + minutes + ":" + seconds +"\">");
+-->
+</script>
+<p align="center"><b>MINERvA Shift Summary Plots</b></p>
+
+
+<p>
+The shift summary plots are auto generated 30 minutes before your shift ends and saved at<br>
+* <b>FNAL</b> - /home/minerva/cmtuser/Minerva_v10r9p1/Tools/ControlRoomTools/SmartShift/images<br> 
+on <font color="red">minerva-cr-01</font> browse to upload, there is a shortcut on the left panel (<font color="blue">upload the plot to ECL</font>)<br>
+* <b>UROC</b> - <a href="http://minerva.fnal.gov/shift/images/ShiftSummaryPlots.gif" target="_blank">http://minerva.fnal.gov/shift/images/ShiftSummaryPlots.gif</a> (<font color="blue">download and post the plot to ECL</font>)<br>
+<br>
+Make sure to upload the most recent plot by looking at the <a href="http://minerva.fnal.gov/shift/images/shift_summary_time.txt" target="_blank">Time Stamp</a>.<br>
+<br>
+
+</p>
+
+
+
+<table border="2"><tbody>
+
+<td>
+<table align="right" width="98%" border="0" cellpadding="0" cellspacing="0"><tbody>
+<td align="left">Shift summary plots for<br>
+<font color="blue">Please choose your shift</font></td>
+
+</tbody></table>
+</td>
+<td>
+<!--Shift Time-->
+<input type="radio" name="Shift summary plots for" value="Day">Day
+<input type="radio" name="Shift summary plots for" value="Evening">Evening
+<input type="radio" name="Shift summary plots for" value="Owl">Owl
+<!--Date-->
+<SELECT NAME="Date">
+<OPTION VALUE="Date" SELECTED>Date</OPTION>
+</SELECT>
+
+</td>
+</tr>
+<tr>
+
+
+<!-- Report problems --><tr>
+<td><b>Comments or any problems</b><br>
+More details about the shift summary plots can be found <a href="https://cdcvs.fnal.gov/redmine/projects/minerva-ops/wiki/The_Minerva_Control_Room_Shift" target="_blank"><font color="green">here </font></a>
+</td>
+<td><textarea name="Comments or any problems" rows="5" cols="55"></textarea></td>
+</tr>
+<!-- End of entry fields-->
+</tbody></table>
+
+<p>
+Don't forget to attach the image!
+</p>
+
+
